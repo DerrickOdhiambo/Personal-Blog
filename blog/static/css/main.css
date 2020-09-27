@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Balsamiq+Sans&family=Fredoka+One&family=Modak&family=Molle:ital@1&display=swap');
+.landing-page {
+  background: url(../images/img2.jpg);
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+}
+.navigation {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+  background: rgba(213, 210, 193, 0.6);
+}
+.nav ul li, .sign ul li {
+  display: inline-block;
+  padding: 15px;
+  align-items: center;
+}
+.logo h3 {
+  font-family: 'Architects Daughter', cursive;
+  color: #370d00;
+  font-size: 2.5rem;
+}
+.logo h3 span {
+  color: #a46843;
+  font-family: 'Molle', cursive;
+}
+.nav ul li a, .sign ul li a {
+  color: #370d00;
+  font-family: 'Architects Daughter', cursive;
+  font-size: 1.5rem;
+}
