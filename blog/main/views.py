@@ -1,9 +1,11 @@
 from flask import render_template
 from . import main
+from blog.models import Post
 
 @main.route('/')
 def home():
-  return render_template('home.html', title = 'Home')
+  posts = Post.query.all()
+  return render_template('home.html', title = 'Home', posts=posts)
 
 @main.route('/about')
 def about():
