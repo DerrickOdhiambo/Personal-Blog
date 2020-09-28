@@ -46,7 +46,7 @@ body {
 .arrow {
   position: absolute;
   top: 80%;
-  left: 30%;
+  left: 50%;
   transform: translate(-50%, -50%);
 }
 .arrow span {
@@ -77,6 +77,12 @@ body {
     opacity: 0;
     transform: rotate(45deg) translate(30px, 30px);
   }
+}
+.account-img {
+  height: 150px;
+  width: 150px;
+  margin-right: 20px;
+  margin-bottom: 16px;
 }
 .forms {
   background: rgba(213, 210, 193, 0.5);

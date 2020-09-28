@@ -16,6 +16,6 @@ def register():
 def login():
   form = LoginForm()
   if form.validate_on_submit():
-    return redirect(url_for('main.home'))
+  return redirect(url_for('main.home'))
   return render_template('login.html', title = 'Login', form = form)
 
