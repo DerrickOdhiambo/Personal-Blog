@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&family=Balsamiq+Sans&family=Fredoka+One&family=Modak&family=Molle:ital@1&display=swap');
+
+
+body {
+  font-family: 'Balsamiq Sans', cursive;
+  background-color: #bd8e62;
+}
 .landing-page {
   background: url(../images/img2.jpg);
   height: 100vh;
@@ -9,10 +15,10 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 100px;
+  /* height: 100px; */
   width: 100%;
-  position: fixed;
-  background: rgba(213, 210, 193, 0.6);
+  /* position: fixed; */
+  background: rgb(213, 210, 193);
 }
 .nav ul li, .sign ul li {
   display: inline-block;
@@ -23,14 +29,19 @@
   font-family: 'Architects Daughter', cursive;
   color: #370d00;
   font-size: 2.5rem;
+  font-weight: 700;
 }
 .logo h3 span {
   color: #a46843;
 }
-.nav ul li a, .sign ul li a {
+.nav ul li a, .sign ul li a, legend {
   color: #370d00;
   font-family: 'Architects Daughter', cursive;
   font-size: 1.5rem;
+}
+.nav ul li a:hover, .sign ul li a:hover {
+  text-decoration: none;
+  color: #bd8e62;
 }
 .arrow {
   position: absolute;
@@ -66,4 +77,15 @@
     opacity: 0;
     transform: rotate(45deg) translate(30px, 30px);
   }
+}
+.forms {
+  background: rgba(213, 210, 193, 0.5);
+  border-radius: 3px;
+  color: #370d00;
+  margin-bottom: 20px;
+  margin-top: 8rem;
+  padding: 10px 20px;
+}
+.flash {
+  margin-top: 70px;
 }
