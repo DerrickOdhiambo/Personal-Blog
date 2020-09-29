@@ -3,7 +3,7 @@
 
 body {
   font-family: 'Balsamiq Sans', cursive;
-  background-color: #bd8e62;
+  background-color: #fffee7;
 }
 .landing-page {
   background: url(../images/img2.jpg);
@@ -94,4 +94,64 @@ body {
 }
 .flash {
   margin-top: 70px;
+}
+.comment {
+  background: rgba(213, 210, 193, 0.5);
+  border-radius: 3px;
+  color: #370d00;
+  margin-bottom: 20px;
+  padding: 10px 20px;
+}
+.card-title h1 {
+  font-weight: 700;
+}
+.card {
+  background: rgba(146, 133, 91, 0.5);
+}
+.footer {
+  background: rgb(213, 208, 193);
+}
+.footer-top .form-group {
+  align-items: center;
+}
+.footer h5 {
+  color: #a46843;
+  text-align: center;
+  margin-top: 10px;
+}
+.col-md-4 ul li {
+  list-style-type: none;
+}
+.col-md-4 ul li a {
+  color: #370d00;
+  transition: .5s;
+}
+.col-md-4 ul li a:hover {
+  color: #a46843;
+  text-decoration: none;
+  margin-left: 5px;
+  transition: .5s;
+}
+.col-md-4 {
+  border: 1px solid #370d00;
+}
+.card-header a, .col-md-5 h4, .col-md-4 h5, .container h2 {
+  color: #003e77;
+  font-family: 'Architects Daughter', cursive;
+}
+.card a:hover {
+  color: #a46843;
+  text-decoration: none;
+}
+.card-body p {
+  color: #370d00;
+}
+.card-body h1 a, .about h1 {
+  color: #003e77;
+}
+.about {
+  background-color: rgba(213, 210, 193, 0.8);
+  position: absolute;
+  top: 30%;
+  left: 8%;
 }
