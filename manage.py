@@ -5,7 +5,7 @@ from blog.models import User, Post
 
 
 #creating app instance
-app = create_app('development')
+app = create_app('production')
 
 migrate = Migrate(app, db)
 manager =  Manager(app)
