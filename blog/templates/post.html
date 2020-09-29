@@ -10,17 +10,42 @@
         <h1>{{ post.title }}</h1>
         <p>{{ post.content }}</p>
       </div>
+      <h5>{{ post.comments }}Comments</h5>
+      {% for comment in comments %}
+      <div class="comments">
+        <p>{{ comment.name }} <small class="text-muted">{{ comment.time_posted }}</small></p>
+        <p>{{ comment.message }}</p>
+      </div>
+      {% endfor %}
+      {% if post.author == current_user %}
+      <div>
+        <a class="btn btn-info btn-sm mt-3 mb-3" href="{{ url_for('posts.update_post', post_id=post.id) }}">Update
+          Post</a>
+        <button class="btn btn-danger btn-sm m-3" data-toggle="modal" data-target="#deleteModalCenter">Delete
+          Post</button>
+      </div>
+      {% endif %}
+      <div class="col-md-8 comment">
+        <h5>Leave a comment</h5>
+        <form action="" method="POST">
+          <div class="form-group">
+            {{ form.name.label(class="form-control-label") }}
+            {{ form.name(class='form-control form-control-md') }}
+          </div>
+          <div class="form-group">
+            {{ form.email.label(class='form-control-label') }}
+            {{ form.email(class='form-control form-control-md') }}
+          </div>
+          <div class="form-group">
+            {{ form.message.label(class='form-control-label') }}
+            {{ form.message(class='form-control form-control-md') }}
+          </div>
+          <div class="form-group">
+            {{ form.submit(class="btn btn-light") }}
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
-  {% if post.author == current_user %}
-  <div>
-    <a class="btn btn-info btn-sm mt-3 mb-3" href="{{ url_for('posts.update_post', post_id=post.id) }}">Update Post</a>
-    <button class="btn btn-danger btn-sm m-3" data-toggle="modal" data-target="#deleteModalCenter">Delete
-      Post</button>
-  </div>
-  {% endif %}
-  <div>
-    <h5>Leave a comment</h5>
   </div>
 </div>
 <!-- Modal -->
