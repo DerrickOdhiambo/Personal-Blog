@@ -2,8 +2,10 @@ from flask import render_template,url_for,flash, redirect, request, abort
 from flask_login import current_user, login_required
 from blog import db
 from . import posts
-from blog.models import Post
-from blog.posts.forms import PostForm
+from blog.models import Post, Comments, Email
+from blog.posts.forms import PostForm, CommentForm
+from ..email import mail_message
+from blog.main.forms import EmailSubscriptionForm
 
 
 
@@ -20,10 +22,18 @@ def new_post():
   return render_template('create_post.html', title = 'Blog-Post', form = form, legend='New Blog-post')
 
 
-@posts.route('/post/<int:post_id>')
+@posts.route('/post/<int:post_id>', methods=['GET', 'POST'])
 def post(post_id):
   post = Post.query.get_or_404(post_id)
-  return render_template('post.html', title = post.title, post=post)
+  form = CommentForm()
+  comments = Comments.query.filter_by(post_id=post.id).order_by(Comments.time_posted.desc()).all()
+  if request.method == 'POST':
+    comment = Comments(name = form.name.data, email=form.email.data, message=form.message.data, post_id=post.id)
+    db.session.add(comment)
+    # post.comment += 1
+    flash('Your comment has been submitted!', 'success')
+    return redirect(url_for('posts.post', post_id=post.id))
+  return render_template('post.html', title = post.title, post=post, form=form, comments=comments)
 
 
 @posts.route('/post/<int:post_id>/update', methods=['GET','POST'])
@@ -55,3 +65,14 @@ def delete_post(post_id):
   db.session.commit()
   flash('Your post has been deleted!', 'success')
   return redirect(url_for('main.home'))
+
+@posts.route('/', methods=['GET', 'POST'])
+def send_email():
+  form = EmailSubscriptionForm()
+  if request.method == 'POST':
+    subscription_email = Email(email=form.email.data)
+    db.session.add(subscription_email)
+    db.session.commit()
+    flash('You have succesfully subscribed to the blog post')
+    return redirect(request.url)
+  return render_template('home.html', form=form)
