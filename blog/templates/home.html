@@ -8,25 +8,79 @@
   </div>
 </div>
 <div class="container">
-  <h2>Posts</h2>
   <div class="row">
-    {% for post in posts %}
-    <div class="col-md-4">
-      <div class="card">
+    <div class="col-md-7">
+      <h2 class="mt-2">Blog Posts</h2>
+      {% for post in posts %}
+      <div class="card mb-2">
         <div class="card-header">
           <p><a href="">{{ post.author.username }}</a></p>
         </div>
         <div class="card-body">
-          <h5 class="card-title"><a href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h5>
+          <h1 class="card-title"><a href="{{ url_for('posts.post', post_id=post.id) }}">{{ post.title }}</a></h1>
+          <p>{{ post.content|truncate(200) }}</p>
         </div>
         <div class="card-footer">
           <p><small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small></p>
         </div>
       </div>
+      {% endfor %}
     </div>
-    {% endfor %}
-    <div class="col-md-8 img-fluid">
-      <img src="{{ url_for('static', filename='images/img3.jpg') }}" style="height:300px; width: 600px;" alt="">
+    <div class="col-md-5">
+      <h2 class="mt-2">Random Quotes</h2>
+      {% for quote in random_quotes %}
+      <div class="card mb-2">
+        <div class="card-body">
+          <p>{{ quote.author }}</p>
+        </div>
+        <div class="card-footer">
+          <p class="text-center font-italic">Author : {{ quote.quote }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="footer">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-4">
+        <h5 class="text-uppercase">Personal Publisher</h5>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum in distinctio fugiat dolorum nemo dicta,
+          provident accusantium cum praesentium tempora quisquam rem at, est officiis veritatis deleniti magni
+          perspiciatis asperiores.</p>
+      </div>
+      <div class="col-md-4">
+        <h5>QUICK LINKS</h5>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="{{ url_for('users.register') }}">Create an account</a></li>
+          <li><a href="{{ url_for('main.about') }}">About</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h5>SUBSCRIBE</h5>
+        <div class=" text-center">
+          <form action="" method="POST">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+              {% if form.email.errors %}
+              {{ form.email(class='form-control form-control-lg is-invalid') }}
+              <div class="invalid-feedback">
+                {% for error in form.email.errors %}
+                <span>{{ error }}</span>
+                {% endfor %}
+              </div>
+              {% else %}
+              {{ form.email(class='form-control form-control-lg') }}
+              {% endif %}
+            </div>
+            <div class="form-group">
+              {{ form.submit(class='btn btn-outline-dark') }}
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>
