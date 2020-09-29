@@ -10,7 +10,3 @@ def home():
 @main.route('/about')
 def about():
   return render_template('about.html', title = 'About')
-
-@main.route('/articles')
-def articles():
-  return render_template('articles.html', title = 'Articles')
